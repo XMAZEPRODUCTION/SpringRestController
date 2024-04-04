@@ -44,13 +44,15 @@ table.comicGreen tfoot td {
     <th>Имя</th>
     <th>Фамилия</th>
     <th>Возраст</th>
+    <th>Пароль</th>
     <th></th>
   </tr>
   <tr>
     <td><p th:text="${user.getId()}">VALUE</p></td>
-    <td><p th:text="${user.getFirstName()}">VALUE</p></td>
+    <td><p th:text="${user.getUsername()}">VALUE</p></td>
     <td><p th:text="${user.getLastName()}">VALUE</p></td>
     <td><p th:text="${user.getAge()}">VALUE</p></td>
+    <td><p th:text="${user.getPassword()}">VALUE</p></td>
     <td><a th:href="@{/users/{id}/edit(id=${user.getId()})}"><input type="submit" value="Изменить"/></a></td>
     <td>
       <form th:method="delete" th:action="@{/users/{id}(id=${user.getId()})}">

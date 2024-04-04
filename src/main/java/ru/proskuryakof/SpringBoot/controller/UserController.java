@@ -9,7 +9,6 @@ import ru.proskuryakof.SpringBoot.service.UserService;
 
 
 @Controller
-@RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
@@ -17,45 +16,38 @@ public class UserController {
     @GetMapping()
     public String getAllUser(Model model) {
         model.addAttribute("users", userService.getList());
-        return "index";
+        return "userIndex";
     }
 
-    @GetMapping("/new")
-    public String newUser(Model model) {
-        model.addAttribute("user", new User());
-        return "new";
-    }
+//    @GetMapping("/new")
+//    public String newUser(Model model) {
+//        model.addAttribute("user", new User());
+//        return "new";
+//    }
 
-    @PostMapping
-    public String create(@ModelAttribute("user") User user) {
-        userService.create(user);
-        return "redirect:/users";
-    }
+//    @PostMapping
+//    public String create(@ModelAttribute("user") User user) {
+//        userService.create(user);
+//        return "redirect:/users";
+//    }
 
-    @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable("id") Long id) {
-        userService.delete(id);
-        return "redirect:/users";
-    }
+//    @DeleteMapping("/{id}")
+//    public String deleteUser(@PathVariable("id") Long id) {
+//        userService.delete(id);
+//        return "redirect:/users";
+//    }
 
-    @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("user", userService.getUserById(id));
-        return "edit";
-    }
+//    @GetMapping("/{id}/edit")
+//    public String edit(Model model, @PathVariable("id") Long id) {
+//        model.addAttribute("user", userService.getUserById(id));
+//        return "edit";
+//    }
 
-    @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
-        userService.create(user);
-        return "redirect:/users";
-    }
-
-    @GetMapping("/{id}")
-    public String getUserById(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userService.getUserById(id));
-        return "show";
-
-    }
+//    @PatchMapping("/{id}")
+//    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
+//        userService.create(user);
+//        return "redirect:/users";
+//    }
 
 
 }

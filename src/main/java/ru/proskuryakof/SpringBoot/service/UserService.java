@@ -6,4 +6,11 @@ public interface UserService {
     User getUserById (Long id);
     void delete (Long id);
     List<User> getList();
+
+    Long getUsernameByName(String name);
+
+    User getUserAndRoles(User user, String[] roles);
+
+    User getNotNullRole(User user);
+
 }

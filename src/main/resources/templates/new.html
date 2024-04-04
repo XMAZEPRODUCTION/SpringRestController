@@ -43,13 +43,23 @@ table.comicGreen tfoot td {
     <th>Имя</th>
     <th>Фамилия</th>
     <th>Возраст</th>
+    <th>Пароль</th>
     <th></th>
   </tr>
   <tr>
-    <form th:method="post" th:action="@{/users}" th:object="${user}">
-      <td><input type="text" th:field="*{firstName}" id="firstName"/></td>
+    <form th:method="post" th:action="@{/admin}" th:object="${user}">
+      <td><input type="text" th:field="*{username}" id="Username"/></td>
       <td><input type="text" th:field="*{lastName}" id="lastName"/></td>
       <td><input type="text" th:field="*{age}" id="age"/></td>
+      <td><input type="text" th:field="*{password}" id="password"/></td>
+      <br>
+      <select name="nameRoles" multiple size="2">
+        <option th:each="role : ${roles}"
+                th:value="${role.name}"
+                th:text="${role.getName()}">
+        </option>
+      </select>
+      <br>
       <td><input type="submit" value="Создать"/></td>
     </form>
   </tr>
