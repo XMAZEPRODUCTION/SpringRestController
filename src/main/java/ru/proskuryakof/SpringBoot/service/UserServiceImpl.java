@@ -13,6 +13,7 @@ import ru.proskuryakof.SpringBoot.repository.RoleRepository;
 import ru.proskuryakof.SpringBoot.repository.UserRepository;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -74,6 +75,13 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             user.setRoles(Collections.singleton(new Role(2L)));
         }
         return user;
+    }
+
+    @Override
+    public List<User> getUserByUsername(String name) {
+        List<User>list = new ArrayList<>();
+        list.add(userRepository.findByUsername(name));
+        return list;
     }
 
     @Override

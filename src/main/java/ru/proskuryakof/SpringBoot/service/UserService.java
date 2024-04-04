@@ -13,4 +13,8 @@ public interface UserService {
 
     User getNotNullRole(User user);
 
+    List<User> getUserByUsername (String name);
+
+
+
 }
