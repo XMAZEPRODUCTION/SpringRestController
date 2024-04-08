@@ -25,15 +25,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/users/**").hasAnyRole("USER", "ADMIN")
-                .antMatchers("/news").permitAll()
+                .antMatchers("/admin/").hasRole("ADMIN")
+                .antMatchers("/user/").hasAnyRole("USER", "ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().successHandler(successUserHandler)
-                .permitAll()
+                .loginProcessingUrl("/process_login")
+                .failureUrl("/auth/login?error")
                 .and()
+                .httpBasic()
+                .and()
+                .csrf().disable()
                 .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
                 .permitAll();
     }
 
